@@ -38,7 +38,7 @@ Frequent used classifiers List = [
     "Operating System :: Microsoft :: Windows",
     "Operating System :: MacOS",
     "Operating System :: Unix",
-    
+
     "Programming Language :: Python",
     "Programming Language :: Python :: 2",
     "Programming Language :: Python :: 2.7",
@@ -51,32 +51,37 @@ Frequent used classifiers List = [
 """
 
 from setuptools import setup, find_packages
-from datetime import datetime
 import os
 
-GITHUB_ACCOUNT = "MacHu-GWU" # your GitHub account name
-RELEASE_TAG = "2015-11-20" # the GitHub release tag
-NAME = "pyknackhq" # name your package
+
+GITHUB_ACCOUNT = "MacHu-GWU"  # your GitHub account name
+RELEASE_TAG = "2015-11-20"  # the GitHub release tag
+NAME = "pyknackhq"  # name your package
+
 
 VERSION = __import__(NAME).__version__
 PACKAGES = [NAME] + ["%s.%s" % (NAME, i) for i in find_packages(NAME)]
 PACKAGE_DATA = {
 }
-SHORT_DESCRIPTION = __import__(NAME).__short_description__ # GitHub Short Description
+SHORT_DESCRIPTION = __import__(NAME).__short_description__  # GitHub Short Description
+
 
 AUTHOR = "Sanhe Hu"
 AUTHOR_EMAIL = "husanhe@gmail.com"
 MAINTAINER = AUTHOR
 MAINTAINER_EMAIL = AUTHOR_EMAIL
 
-PROJECT_NAME = os.path.basename(os.getcwd()) # the project dir is the project name
+
+PROJECT_NAME = os.path.basename(os.getcwd())  # the project dir is the project name
 URL = "https://github.com/{0}/{1}".format(GITHUB_ACCOUNT, PROJECT_NAME)
 DOWNLOAD_URL = "https://github.com/{0}/{1}/tarball/{2}".format(
     GITHUB_ACCOUNT, PROJECT_NAME, RELEASE_TAG)
 
-with open("readme.rst", "rb") as f:
+
+with open(os.path.join(os.path.dirname(__file__), "readme.rst"), "rb") as f:
     LONG_DESCRIPTION = f.read().decode("utf-8")
 LICENSE = "MIT"
+
 
 PLATFORMS = ["Windows", "MacOS", "Unix"]
 CLASSIFIERS = [
@@ -95,25 +100,27 @@ CLASSIFIERS = [
     "Programming Language :: Python :: 3.4",
 ]
 
-with open("requirements.txt", "rb") as f:
+
+with open(os.path.join(os.path.dirname(__file__), "requirements.txt"), "rb") as f:
     REQUIRES = [i.strip() for i in f.read().decode("utf-8").split("\n")]
-    
+
+
 setup(
-    name = NAME,
-    packages = PACKAGES,
-    include_package_data = True,
-    package_data  = PACKAGE_DATA,
-    version = VERSION,
-    author = AUTHOR,
-    author_email = AUTHOR_EMAIL,
-    maintainer = MAINTAINER,
-    maintainer_email = MAINTAINER_EMAIL,
-    url = URL,
-    description = SHORT_DESCRIPTION,
-    long_description = LONG_DESCRIPTION,
-    download_url = DOWNLOAD_URL,
-    classifiers = CLASSIFIERS,
-    platforms = PLATFORMS,
-    license = LICENSE,
-    install_requires = REQUIRES,
+    name=NAME,
+    packages=PACKAGES,
+    include_package_data=True,
+    package_data=PACKAGE_DATA,
+    version=VERSION,
+    author=AUTHOR,
+    author_email=AUTHOR_EMAIL,
+    maintainer=MAINTAINER,
+    maintainer_email=MAINTAINER_EMAIL,
+    url=URL,
+    description=SHORT_DESCRIPTION,
+    long_description=LONG_DESCRIPTION,
+    download_url=DOWNLOAD_URL,
+    classifiers=CLASSIFIERS,
+    platforms=PLATFORMS,
+    license=LICENSE,
+    install_requires=REQUIRES,
 )
